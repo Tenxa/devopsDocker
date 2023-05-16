@@ -1,4 +1,3 @@
-# Start from the ubuntu image
 FROM ubuntu:20.04
 
 # Install curl
@@ -9,10 +8,10 @@ RUN apt-get update \
 WORKDIR /usr/src/app
 
 # Copy the hello.sh file from this location to /usr/src/app/ creating /usr/src/app/hello.sh.
-COPY search.sh .
+COPY input.sh .
 
 # Grant permission to file
-RUN chmod +x search.sh
+RUN chmod +x input.sh
 
 # When running Docker run the command will be ./hello.sh
-ENTRYPOINT [ "./search.sh" ]
+CMD ./input.sh
