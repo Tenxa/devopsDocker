@@ -1,0 +1,2 @@
+docker run --platform linux/amd64 -p 127.0.0.1:8080 devopsdockerhu/simple-web-service
+docker run -p 127.0.0.1:8080:8080 devopsdockeruh/simple-web-service server
