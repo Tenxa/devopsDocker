@@ -1,0 +1,26 @@
+FROM node:16
+
+WORKDIR /usr/src/app
+
+# Install app dependencies
+# A wildcard is used to ensure both package.json AND package-lock.json are copied
+# where available (npm@5+)
+# rather than copying the entire working directory, we are only copying the package.json file. This allows us to take advantage of cached Docker layers.
+COPY package*.json ./
+
+# Install all packages
+RUN npm install
+
+# Bundle app source
+COPY . .
+
+# Build static files.
+# Generates them into build folder
+RUN npm run build
+
+# Install serve
+RUN npm install -g serve
+
+EXPOSE 5000
+
+CMD ["serve", "-s", "-l", "5000", "build"]
